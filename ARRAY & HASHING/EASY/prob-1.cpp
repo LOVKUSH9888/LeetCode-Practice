@@ -22,6 +22,15 @@ public:
     }
 };
 
+//Revision 
+sort(nums.begin(), nums.end());
+for(int i = 0; i < nums.size(); i++) {
+    if(nums[i] == nums[i - 1]) {
+        return true;
+    }
+}
+return false;
+
 
 //3.Using HashMap - O(N)
 ///HASHING = Hashing is a technique used to map large data sets of any size to a fixed size data set
