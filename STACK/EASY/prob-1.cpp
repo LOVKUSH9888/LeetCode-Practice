@@ -75,3 +75,30 @@ public:
         return st.size() ? 0 : 1;
     }
 };
+
+//3rd - way
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> myStack;
+        for (char c : s)    //"for(auto i : s)" is a range-based for loop in C++.
+        ///n this loop, "s" is the range, which in this case is a string. "auto i" declares a variable "i" of the same type as the elements in "s" (in this case, "char").
+        { 
+            if (myStack.empty() || c == '(' || c == '{' || c == '[')
+            {
+                myStack.push(c);
+            }
+            else
+            {
+                if ((c == ')' && myStack.top() != '(') || 
+                    (c == ']' && myStack.top() != '[') ||
+                    (c == '}' && myStack.top() != '{'))
+                {
+                    return false;
+                }
+                myStack.pop();
+            }
+        }
+        return myStack.empty();
+    }
+};
